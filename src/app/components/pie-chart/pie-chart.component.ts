@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartType, ChartEvent } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import DatalabelsPlugin from 'chartjs-plugin-datalabels';
@@ -8,7 +8,7 @@ import DatalabelsPlugin from 'chartjs-plugin-datalabels';
   templateUrl: './pie-chart.component.html',
   styleUrls: ['./pie-chart.component.scss'],
 })
-export class PieChartComponent {
+export class PieChartComponent implements OnInit {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
   // Pie
@@ -16,7 +16,7 @@ export class PieChartComponent {
     responsive: true,
     plugins: {
       legend: {
-        display: true,
+        display: false,
         position: 'left',
       },
       datalabels: {
@@ -76,23 +76,16 @@ export class PieChartComponent {
     this.chart?.update();
   }
 
-  changeLegendPosition(): void {
-    if (this.pieChartOptions?.plugins?.legend) {
-      this.pieChartOptions.plugins.legend.position =
-        this.pieChartOptions.plugins.legend.position === 'left'
-          ? 'top'
-          : 'left';
-    }
-
-    this.chart?.render();
-  }
-
   toggleLegend(): void {
     if (this.pieChartOptions?.plugins?.legend) {
       this.pieChartOptions.plugins.legend.display =
         !this.pieChartOptions.plugins.legend.display;
     }
 
+    this.chart?.render();
+  }
+
+  ngOnInit(): void {
     this.chart?.render();
   }
 }
