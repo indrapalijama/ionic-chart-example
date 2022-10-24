@@ -1,0 +1,18 @@
+<ion-content>
+  <div>
+    <div>
+      <div class="chart">
+        <canvas baseChart [data]="pieChartData" [type]="pieChartType" [options]="pieChartOptions"
+          [plugins]="pieChartPlugins">
+        </canvas>
+      </div>
+    </div>
+  </div>
+  <div class="button-row">
+    <ion-button size="small" shape='round' (click)="toggleLegend()">Toggle Legend</ion-button>
+    <ion-button size="small" shape='round' (click)="addSlice()">Add Slice</ion-button>
+    <ion-button size="small" shape='round' (click)="removeSlice()">Remove Slice</ion-button>
+    <ion-button size="small" shape='round' (click)="changeLegendPosition()">Change Legend
+      Position</ion-button>
+  </div>
+</ion-content>

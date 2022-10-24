@@ -6,7 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
+  type = '';
   constructor() {}
 
+  changeType(event) {
+    this.type = event.target.value;
+  }
 }
